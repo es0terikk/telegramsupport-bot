@@ -1,55 +1,55 @@
-# Инструкция по настройке.
+# Instructions for setting up.
 
-Для начала работы с ботом вам необходимо настроить конфигурационный файл бота - config.py
-Обязательными переменными является TOKEN, ADMIN_ID и MySQL.
-PROXY_URL вы можете оставить пустым.
+To start working with the bot, you need to set up the bot configuration file - config.py
+Required variables are TOKEN, ADMIN_ID and MySQL.
+You can leave PROXY_URL blank.
 
-Описывать установку и настройку я буду для Linux, Ubuntu-based дистрибутивов. Если у вас установлен Windows, либо же другой дистрибутив, то различия с гайдом ниже вы найдете только в пунктах с установкой и настройкой MySQL. Поэтому, при возникновении проблем попробуйте найти гайд по установке MySQL конкретно под вашу ОС.
+I will describe installation and configuration for Linux, Ubuntu-based distributions. If you have Windows installed or another distribution, then you will find the differences with the guide below only in the points with installing and configuring MySQL. Therefore, if you encounter problems, try to find a guide for installing MySQL specifically for your OS.
 
-# 1. Сначала, проверьте установлен ли MySQL на вашем ПК.
-Откройте терминал и пропишите команду: mysql --version
-Если вы увидите сообщение похожее на: mysql Ver xx.xx **, то можете смело переходить на пункт номер 2.
+# 1. First, check if MySQL is installed on your PC.
+Open a terminal and write the command: mysql --version
+If you see a message similar to: mysql Ver xx.xx **, then you can safely go to step number 2.
 
-# 1.2. Если же MySQL не установлен, то введите несколько команд в терминал: 
-sudo apt update 
-sudo apt install mysql-server
+# 1.2. If MySQL is not installed, then enter a few commands in the terminal:
+sudo apt update
+sudo apt install mysql server
 
-Возвращаемся в пункт 1 и проверяем правильно ли мы все установили. 
-Если видите сообщение с версией установленного MySQL, то переходим дальше. 
-Если нет - возвращаемся и проверяем, что вы сделали не так. 
+We return to point 1 and check whether we have installed everything correctly.
+If you see a message with the version of MySQL installed, then move on.
+If not, go back and check what you did wrong.
 
-# 2. С установкой MySQL закончили, переходим к созданию пользователя и БД
-Введите в терминал команду mysql
+# 2. With the installation of MySQL finished, let's move on to creating a user and a database
+Enter the mysql command in the terminal
 
-# 2.2. После этого создайте пользователя командой:
+# 2.2. After that, create a user with the command:
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 
-Где user - имя пользователя
-А password - пароль
+Where user is the username
+And password is the password
 
-# 2.3. Предоставьте права пользователю:
+# 2.3. Grant rights to the user:
 GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 
-Где user - имя пользователя, которое вы ввели в шаге выше
+Where user is the username you entered in the step above
 
-# 2.4. Создайте БД:
+# 2.4. Create a DB:
 CREATE DATABASE support_db;
 
-Где support_db - имя базы данных
+Where support_db is the name of the database
 
-# 2.5. Замените все значения в переменной MySQL
-localhost - оставить без изменения
-user - имя пользователя, которого вы создали
-password - пароль для пользователя
-support_db - имя базы данных
+# 2.5. Replace all values in MySQL variable
+localhost - leave unchanged
+user - the username you created
+password - password for the user
+support_db - database name
 
-# 3. Создайте вашего бота и получите токен для него
-Перейдите по ссылке t.me/BotFather, либо найдите его сами в поиске по юзернейму @BotFather и введите команду /newbot
-Следуйте дальнейшим указаниям бота и укажите полученный токен в переменной TOKEN
+# 3. Create your bot and get a token for it
+Go to the link t.me/BotFather, or find it yourself in the search for the username @BotFather and enter the command /newbot
+Follow the bot's further instructions and specify the received token in the TOKEN variable
 
-# 4. Найдите бота, который отправит вам ваш Telegram ID
-Одними из таких ботов могут быть @userinfobot или @username_to_id_bot
-Введите полученный ID в переменную ADMIN_ID
+# 4. Find a bot that will send you your Telegram ID
+One of these bots can be @userinfobot or @username_to_id_bot
+Enter the received ID into the ADMIN_ID variable
 
-На этом, настройка конфига завершена. Можете просто сохранить и закрыть этот файл.
+This completes the config setup. You can just save and close this file.
